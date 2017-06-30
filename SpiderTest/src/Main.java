@@ -1,5 +1,6 @@
 import java.io.*;  
-import java.net.*;  
+import java.net.*;
+import java.util.ArrayList;
 import java.util.regex.*;  
   
 public class Main {  
@@ -43,18 +44,22 @@ public class Main {
   
     }  
   
-    static String RegexString(String targetStr, String patternStr) {  
+    static ArrayList<String> RegexString(String targetStr, String patternStr) {  
         // 定义一个样式模板，此中使用正则表达式，括号中是要抓的内容  
         // 相当于埋好了陷阱匹配的地方就会掉下去  
+    	ArrayList<String> result = new ArrayList<String>();
         Pattern pattern = Pattern.compile(patternStr);  
         // 定义一个matcher用来做匹配  
         Matcher matcher = pattern.matcher(targetStr);  
         // 如果找到了  
-        if (matcher.find()) {  
-            // 打印出结果  
-            return matcher.group(1);  
-        }  
-        return "Nothing";  
+        boolean isFind = matcher.find();
+        while (isFind)
+        {
+        	result.add(matcher.group(1));
+        	result.add("\n");
+        	isFind = matcher.find();
+        }
+        return result;
     }  
   
     public static void main(String[] args) {  
@@ -64,9 +69,9 @@ public class Main {
         // 访问链接并获取页面内容  
         String result = SendGet(url);  
         // 使用正则匹配图片的src内容  
-        String imgSrc = RegexString(result, "question_link.+?>(.+?)<");  
+        ArrayList<String> src = RegexString(result, "question_link.+?>(.+?)<");  
         // 打印结果  
         System.out.println(result);  
-        System.out.println(imgSrc);  
+        System.out.println(src);  
     }  
 }  

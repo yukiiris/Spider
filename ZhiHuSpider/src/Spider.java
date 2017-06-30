@@ -1,0 +1,72 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+public class Spider {
+
+	static String SendGet(String url)
+	{
+		String result = "";
+		BufferedReader in = null;
+		
+		try
+		{
+			URL realUrl = new URL(url);
+			URLConnection connection = realUrl.openConnection();
+			connection.connect();
+			in = new BufferedReader(new InputStreamReader(connection.getInputStream(), "UTF-8"));
+			String line;
+			while ((line = in.readLine()) != null)
+			{
+				result += line;
+			}
+		}
+		catch (Exception exception)
+		{
+			exception.printStackTrace();
+		}
+		finally
+		{
+			if (in != null)
+			{
+				try
+				{
+					in.close();
+				}
+				catch (Exception e) 
+				{
+					// TODO: handle exception
+					e.printStackTrace();
+				}
+			}
+		}
+		return result;
+	}
+	
+	static ArrayList<ZhiHu> GetZhiHu(String content)
+	{
+		ArrayList<ZhiHu> results = new ArrayList<ZhiHu>();
+		Pattern questionPattern = Pattern.compile("question_link.+?>(.+?<");
+		Matcher questionMatcher = questionPattern.matcher(content);
+		Pattern urlPattern = Pattern.compile("question_link.+?href=\"(.+?)\"");
+		Matcher urlMatcher = urlPattern.matcher(content);
+		
+		boolean isFind = questionMatcher.find() && urlMatcher.find();
+		
+		while (isFind)
+		{
+			ZhiHu zhiHu = new ZhiHu();
+			zhiHu.question = questionMatcher.group(1);
+			zhiHu.ZhiHuUrl = "http://www.zhihu.com" + urlMatcher.group(1);
+			
+			results.add(zhiHu);
+			isFind =  questionMatcher.find() && urlMatcher.find();
+		}
+		return results;
+	}
+}

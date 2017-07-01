@@ -48,24 +48,29 @@ public class Spider {
 		return result;
 	}
 	
-	static ArrayList<ZhiHu> GetZhiHu(String content)
+	static ArrayList<ZhiHu> GetRecommendation(String content)
 	{
 		ArrayList<ZhiHu> results = new ArrayList<ZhiHu>();
+<<<<<<< HEAD
 		/*Pattern questionPattern = Pattern.compile("question_link.+?>(.+?)<");
 		Matcher questionMatcher = questionPattern.matcher(content);*/
 		Pattern urlPattern = Pattern.compile("<h2>.+?question_link.+?href=\"(.+?)\".+</h2>");
 		Matcher urlMatcher = urlPattern.matcher(content);
 		
 		boolean isFind = urlMatcher.find();
+=======
+		
+		Pattern pattern = Pattern.compile("<h2>.+?question_link.+?href=\"(.+?)\".+?</h2>");
+		Matcher matcher = pattern.matcher(content);
+		
+		boolean isFind = matcher.find();
+>>>>>>> 907d722286761bbd9a62e79d338d90021ebcda35
 		
 		while (isFind)
 		{
-			ZhiHu zhiHu = new ZhiHu();
-			zhiHu.question = questionMatcher.group(1);
-			zhiHu.ZhiHuUrl = "http://www.zhihu.com" + urlMatcher.group(1);
-			
+			ZhiHu zhiHu = new ZhiHu(matcher.group(1));
 			results.add(zhiHu);
-			isFind =  questionMatcher.find() && urlMatcher.find();
+			isFind = matcher.find();
 		}
 		return results;
 	}

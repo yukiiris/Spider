@@ -7,10 +7,12 @@ public class Main {
 		String url = "https://www.zhihu.com/explore/recommendations";
 		String content = Spider.SendGet(url);
 		ArrayList<ZhiHu> zhiHus = Spider.GetZhiHu(content);
-=======
+
 		ArrayList<ZhiHu> zhiHus = Spider.GetRecommendation(content);
->>>>>>> 907d722286761bbd9a62e79d338d90021ebcda35
-		System.out.println(zhiHus);
+		for (ZhiHu zhiHu : zhiHus)
+		{
+			FileReaderWriter.writeIntoFile(zhiHu.writeString(), "C:/Users/asus/Desktop/Recommendation.txt", true);
+		}
 	}
 
 }

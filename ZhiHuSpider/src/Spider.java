@@ -51,20 +51,11 @@ public class Spider {
 	static ArrayList<ZhiHu> GetRecommendation(String content)
 	{
 		ArrayList<ZhiHu> results = new ArrayList<ZhiHu>();
-<<<<<<< HEAD
-		/*Pattern questionPattern = Pattern.compile("question_link.+?>(.+?)<");
-		Matcher questionMatcher = questionPattern.matcher(content);*/
-		Pattern urlPattern = Pattern.compile("<h2>.+?question_link.+?href=\"(.+?)\".+</h2>");
-		Matcher urlMatcher = urlPattern.matcher(content);
-		
-		boolean isFind = urlMatcher.find();
-=======
-		
+	
 		Pattern pattern = Pattern.compile("<h2>.+?question_link.+?href=\"(.+?)\".+?</h2>");
 		Matcher matcher = pattern.matcher(content);
 		
 		boolean isFind = matcher.find();
->>>>>>> 907d722286761bbd9a62e79d338d90021ebcda35
 		
 		while (isFind)
 		{

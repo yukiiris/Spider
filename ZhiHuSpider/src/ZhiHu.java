@@ -27,22 +27,16 @@ public class ZhiHu {
 		if (getRealUrl(url))
 		{
 			String content = Spider.SendGet(ZhiHuUrl);
-<<<<<<< HEAD
-			Pattern pattern = Pattern.compile("QuestionHeader-title\">.+?>(.+?)<!--");
-=======
+
 			Pattern pattern = Pattern.compile("QuestionHeader-title\">(.+?)</h1>");
->>>>>>> 907d722286761bbd9a62e79d338d90021ebcda35
 			Matcher matcher = pattern.matcher(content);
 			
 			if (matcher.find())
 			{
 				question = matcher.group(1);
 			}
-<<<<<<< HEAD
-			pattern = Pattern.compile("");
-=======
 			
-			pattern = Pattern.compile("QuestionHeader-detail.+?<span.+?>(.+?)</span>");
+			pattern = Pattern.compile("QuestionHeader-detail.+?<span.*?>(.*?)</span>");
 			matcher = pattern.matcher(content);
 			
 			if (matcher.find())
@@ -50,14 +44,13 @@ public class ZhiHu {
 				description = matcher.group(1);
 			}
 			
-			pattern = Pattern.compile("class=\"QuestionAnswers-answers.*?<p>(.+?)</span>");
+			pattern = Pattern.compile("class=\"ContentItem AnswerItem.*?<p>(.+?)</span>");
 			matcher = pattern.matcher(content);
 			
 			if (matcher.find())
 			{
 				answers.add(matcher.group(1));
 			}
->>>>>>> 907d722286761bbd9a62e79d338d90021ebcda35
 		}
 	}
 	
@@ -68,11 +61,7 @@ public class ZhiHu {
 		
 		if (matcher.find())
 		{
-<<<<<<< HEAD
-			ZhiHuUrl = "http://www.zhihu.com/question/" + matcher.group(1);
-=======
 			ZhiHuUrl = "https://www.zhihu.com/question/" + matcher.group(1);
->>>>>>> 907d722286761bbd9a62e79d338d90021ebcda35
 		}
 		else
 		{
@@ -83,12 +72,24 @@ public class ZhiHu {
 	
 	public String toString()
 	{
-<<<<<<< HEAD
-		return "问题：" + question + "\n" + "描述" + description + 
-				"链接" + ZhiHuUrl + "\n回答" + answers + "\n";
-=======
 		return "问题：" + question + "\n" + "描述:" + description + "\n" +
 				"链接:" + ZhiHuUrl + "\n回答:" + answers + "\n";
->>>>>>> 907d722286761bbd9a62e79d338d90021ebcda35
 	}
+
+	public String writeString()
+	{
+		String result = "";
+		result += "问题:" + question +"\r\n";
+		result += "描述:" + description + "\r\n";
+		result += "链接:" + ZhiHuUrl + "\r\n";
+		for (int i = 0; i < answers.size(); i++)
+		{
+			result += "回答:" + i + ":" + answers.get(i) + "\r\n";
+		}
+		result += "\r\n\r\n";
+		result = result.replaceAll("<br>", "\r\n");
+		result = result.replaceAll("<.*?>", "");
+		return result;
+	}
+
 }

@@ -51,12 +51,12 @@ public class Spider {
 	static ArrayList<ZhiHu> GetZhiHu(String content)
 	{
 		ArrayList<ZhiHu> results = new ArrayList<ZhiHu>();
-		Pattern questionPattern = Pattern.compile("question_link.+?>(.+?<");
-		Matcher questionMatcher = questionPattern.matcher(content);
-		Pattern urlPattern = Pattern.compile("question_link.+?href=\"(.+?)\"");
+		/*Pattern questionPattern = Pattern.compile("question_link.+?>(.+?)<");
+		Matcher questionMatcher = questionPattern.matcher(content);*/
+		Pattern urlPattern = Pattern.compile("<h2>.+?question_link.+?href=\"(.+?)\".+</h2>");
 		Matcher urlMatcher = urlPattern.matcher(content);
 		
-		boolean isFind = questionMatcher.find() && urlMatcher.find();
+		boolean isFind = urlMatcher.find();
 		
 		while (isFind)
 		{

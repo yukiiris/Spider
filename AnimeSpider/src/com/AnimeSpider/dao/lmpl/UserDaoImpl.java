@@ -4,10 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import com.AnimeSpider.dao.IUserDao;
+import com.AnimeSpider.dao.IUserDAO;
 import com.AnimeSpider.vo.User;
 
-public class UserDaoImpl implements IUserDao{
+public class UserDaoImpl implements IUserDAO{
 	private Connection conn = null;
 	private PreparedStatement pstm = null;
 	

@@ -2,11 +2,20 @@ package com.AnimeSpider.vo;
 
 public class User {
 	
+	private int ID;
 	private String name;
 	private String email;
 	private String password;
 	
 	
+	public int getID() 
+	{
+		return ID;
+	}
+	public void setID(int iD) 
+	{
+		ID = iD;
+	}
 	public String getEmail() 
 	{
 		return email;

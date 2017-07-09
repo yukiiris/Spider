@@ -49,5 +49,30 @@ public class UserDAOProxy implements IUserDAO{
 		}
 		return isCreate;
 	}
+	
+	public boolean findUser(User user) throws Exception
+	{
+		boolean isFind = false;
+		try
+		{
+			isFind = dao.findUser(user);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				dbc.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return isFind;
+	}
 
 }

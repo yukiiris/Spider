@@ -21,13 +21,14 @@ public class RegisterServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
+		System.out.println(1);
 		String path = "register.jsp";
 		String name = request.getParameter("name");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String verify = request.getParameter("verify");
 		List<String> info = new ArrayList<String>();
-		
+
 		if (name == null || "".equals(name))
 		{
 			info.add("用户名不能为空");
@@ -48,11 +49,13 @@ public class RegisterServlet extends HttpServlet {
 		{
 			info.add("密码过长");
 		}
-		if (!Pattern.matches( ".+?@.+?",email))
+
+		if ((email == null) || !Pattern.matches( ".+?@.+?",email))
 		{
 			info.add("pattern error");
 		}
-		
+		System.out.println(2);
+	
 		if (info.size() == 0)
 		{
 			User user = new User();

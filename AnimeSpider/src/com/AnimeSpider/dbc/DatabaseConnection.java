@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class DatabaseConnection {
 
 	private static final String DBDRIVER = "org.mariadb.jdbc.Driver";
-	private static final String DBURL = "jdbc:mariadb://localhost:3306/animation";
+	private static final String DBURL = "jdbc:mariadb://localhost:3306/anime";
 	private static final String DBUSER = "moltres";
 	private static final String DBPASSWORD = "";
 	private Connection connection = null;

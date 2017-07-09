@@ -1,10 +1,12 @@
 package com.AnimeSpider.dao.proxy;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import com.AnimeSpider.dao.IAnimeDAO;
 import com.AnimeSpider.dao.lmpl.AnimeDaoImpl;
 import com.AnimeSpider.dbc.DatabaseConnection;
+import com.AnimeSpider.vo.Anime;
 
 public class AnimeDAOProxy implements IAnimeDAO{
 
@@ -47,5 +49,10 @@ public class AnimeDAOProxy implements IAnimeDAO{
 			}
 		}
 		return isCreate; 
+	}
+
+	public List<Anime> findAnime(String name)
+	{
+		
 	}
 }

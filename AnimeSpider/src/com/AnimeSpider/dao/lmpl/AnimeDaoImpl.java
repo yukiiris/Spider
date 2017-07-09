@@ -2,8 +2,10 @@ package com.AnimeSpider.dao.lmpl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.List;
 
 import com.AnimeSpider.dao.IAnimeDAO;
+import com.AnimeSpider.vo.Anime;
 
 public class AnimeDaoImpl implements IAnimeDAO{
 	private Connection conn = null;
@@ -48,5 +50,10 @@ public class AnimeDaoImpl implements IAnimeDAO{
 			}
 		}
 		return isCreate;
+	}
+
+	public List<Anime> findAnime(String name) 
+	{
+		
 	}
 }

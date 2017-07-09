@@ -4,12 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Home Page</title>
+<title>Search Page</title>
 </head>
 <body>
-<h1>Welcome to home!</h1>
-<a href="pending.jsp">Pending List</a>
-<a href="following,jsp">Following List</a>
-<a href="search.jsp">Search</a>
+
 </body>
 </html>

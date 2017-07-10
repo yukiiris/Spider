@@ -56,7 +56,7 @@ public class AnimeDAOProxy implements IAnimeDAO{
 		List<Anime> animes = null;
 		try
 		{
-			dao.findAnime(name);
+			animes = dao.findAnime(name);
 		}
 		catch (Exception e)
 		{
@@ -72,6 +72,11 @@ public class AnimeDAOProxy implements IAnimeDAO{
 			{
 				e.printStackTrace();
 			}
+		}
+		for (Anime anime : animes)
+		{
+			System.out.println(anime.getName());
+			System.out.println(anime.getLink());
 		}
 		return animes;
 	}

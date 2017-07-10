@@ -24,7 +24,7 @@ public class FindAnimeServlet extends HttpServlet{
 		List<Anime> animes = null;
 		String name = request.getParameter("name");
 		String path = "search.jsp";
-		
+		System.out.println(name);
 		try
 		{
 			animes = DAOFactory.getIAnimeDAOInstance().findAnime(name);
@@ -33,7 +33,14 @@ public class FindAnimeServlet extends HttpServlet{
 		{
 			e.printStackTrace();
 		}
-		
+		if (animes != null)
+		{
+			for (Anime anime : animes)
+			{
+				System.out.println(anime.getName());
+				System.out.println(anime.getLink());
+			}
+		}
 		request.setAttribute("animes", animes);
 		request.getRequestDispatcher(path).forward(request, response);
 	}

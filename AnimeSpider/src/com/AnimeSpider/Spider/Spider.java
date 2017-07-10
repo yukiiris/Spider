@@ -139,26 +139,26 @@ public class Spider {
 			animes.add(anime);
 		}
 		
-		for (Anime anime : animes)
-		{
-			System.out.println(anime.getName());
-			System.out.println(anime.getLink());
-		}
+//		for (Anime anime : animes)
+//		{
+//			System.out.println(anime.getName());
+//			System.out.println(anime.getLink());
+//		}
 		return animes;
 	}
-	public static void main(String[] args)
-	{
-		String url = null;
-		try {
-			url = URLEncoder.encode("一拳超人", "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//GetContent getContent = new GetContent("http://m.dmzj.com/");
-		//System.out.println("http://m.dmzj.com/search/" + url + ".html?");
-		getAnime(getContent("http://m.dmzj.com/search/" + url + ".html"));
-		//System.out.println(getContent("http://m.dmzj.com/search/" + url + ".html"));
-	}
+//	public static void main(String[] args)
+//	{
+//		String url = null;
+//		try {
+//			url = URLEncoder.encode("一拳超人", "UTF-8");
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		//GetContent getContent = new GetContent("http://m.dmzj.com/");
+//		//System.out.println("http://m.dmzj.com/search/" + url + ".html?");
+//		getAnime(getContent("http://m.dmzj.com/search/" + url + ".html"));
+//		//System.out.println(getContent("http://m.dmzj.com/search/" + url + ".html"));
+//	}
 }
 

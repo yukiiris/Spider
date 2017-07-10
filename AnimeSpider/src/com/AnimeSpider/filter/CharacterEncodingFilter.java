@@ -18,6 +18,7 @@ public class CharacterEncodingFilter implements Filter{
       
       
     public void init(FilterConfig filterConfig) throws ServletException {  
+
         this.filterConfig = filterConfig;  
         //本过滤器默认编码是UTF-8，但也可以在web.xml配置文件里设置自己需要的编码  
         if(filterConfig.getInitParameter("encoding") != null)  

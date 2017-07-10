@@ -32,4 +32,18 @@
     <servlet-name>FindAnimeServlet</servlet-name>
     <url-pattern>/find</url-pattern>
 </servlet-mapping>
+
+<filter>  
+        <filter-name>Encoding</filter-name>  
+        <filter-class>com.AnimeSpider.filter.CharacterEncodingFilter</filter-class>  
+        <init-param>  
+            <param-name>encoding</param-name>  
+            <param-value>UTF-8</param-value>  
+        </init-param>  
+    </filter>  
+      
+    <filter-mapping>  
+        <filter-name>Encoding</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping> 
 </web-app>

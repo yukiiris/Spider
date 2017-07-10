@@ -61,7 +61,10 @@ public class AnimeDaoImpl implements IAnimeDAO{
 		List<Anime> animes = null;
 		try
 		{
-			url = URLEncoder.encode(name, "UTF-8");
+			if (name != null)
+			{
+				url = URLEncoder.encode(name, "UTF-8");
+			}
 		}
 		catch (UnsupportedEncodingException e)
 		{

@@ -9,11 +9,10 @@ public class DAOFactory {
 	
 	public static IUserDAO getIUserDAOInstance() throws Exception
 	{
-			System.out.println("¹¤³§´´½¨³É¹¦");
 			return new UserDAOProxy();
 	}
 	
-	public static IAnimeDAO getIGoodsDAOInstance() throws Exception
+	public static IAnimeDAO getIAnimeDAOInstance() throws Exception
 	{
 		return new AnimeDAOProxy();
 	}

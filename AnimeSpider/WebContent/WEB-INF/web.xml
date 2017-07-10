@@ -22,4 +22,14 @@
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/register</url-pattern>
 </servlet-mapping>
+
+<servlet>
+    <servlet-name>FindAnimeServlet</servlet-name>
+    <servlet-class>com.AnimeSpider.servlet.FindAnimeServlet</servlet-class>
+</servlet>
+ 
+<servlet-mapping>
+    <servlet-name>FindAnimeServlet</servlet-name>
+    <url-pattern>/find</url-pattern>
+</servlet-mapping>
 </web-app>

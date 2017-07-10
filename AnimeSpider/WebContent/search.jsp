@@ -21,13 +21,22 @@
 </form>
 <%
 	List<Anime> animes = (ArrayList<Anime>)request.getAttribute("animes");
-	for (Anime anime : animes)
+	if (animes == null)
 	{
 %>
-		<h4><%=anime.getName() %></h4>
-		<h4><%=anime.getLink() %></h4>
-		<h4>===============================</h4>
+		<h4><%= 1 %></h4>
 <% 
+	}
+	else
+	{
+		for (Anime anime : animes)
+		{
+	%>
+			<h4><%=anime.getName() %></h4>
+			<h4><%=anime.getLink() %></h4>
+			<h4>===============================</h4>
+	<% 
+		}
 	}
 %>
 </body>

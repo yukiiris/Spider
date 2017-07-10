@@ -40,64 +40,64 @@ public class Spider {
 		this.url = url;
 	}
 	
-	public String get()
-	{
-		String content = null;
-		HttpGet httpGet = new HttpGet(url);
-		httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36");          
-		try 
-		{
-			CloseableHttpResponse response = httpClient.execute(httpGet);
-			HttpEntity entity = response.getEntity();
-			content = EntityUtils.toString(entity, "utf-8");
-		} 
-		catch (ClientProtocolException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return content;
-	}
-	
-	public String post(List<NameValuePair> nvps)
-	{
-		String content = null;
-		HttpPost httpPost = new HttpPost(url);
-		try {
-			httpPost.setEntity(new UrlEncodedFormEntity(nvps));
-			CloseableHttpResponse response = httpClient.execute(httpPost);
-			HttpEntity entity = response.getEntity();
-			content = EntityUtils.toString(entity, "UTF-8");
-		} 
-		catch (UnsupportedEncodingException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		
-		catch (ClientProtocolException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		catch (ParseException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-		catch (IOException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return content;
-	}
+//	public String get()
+//	{
+//		String content = null;
+//		HttpGet httpGet = new HttpGet(url);
+//		httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36");          
+//		try 
+//		{
+//			CloseableHttpResponse response = httpClient.execute(httpGet);
+//			HttpEntity entity = response.getEntity();
+//			content = EntityUtils.toString(entity, "utf-8");
+//		} 
+//		catch (ClientProtocolException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
+//		catch (IOException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return content;
+//	}
+//	
+//	public String post(List<NameValuePair> nvps)
+//	{
+//		String content = null;
+//		HttpPost httpPost = new HttpPost(url);
+//		try {
+//			httpPost.setEntity(new UrlEncodedFormEntity(nvps));
+//			CloseableHttpResponse response = httpClient.execute(httpPost);
+//			HttpEntity entity = response.getEntity();
+//			content = EntityUtils.toString(entity, "UTF-8");
+//		} 
+//		catch (UnsupportedEncodingException e) 
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
+//		
+//		catch (ClientProtocolException e) 
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
+//		catch (ParseException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} 
+//		catch (IOException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		
+//		return content;
+//	}
 	
 	public static String getContent(String url)
 	{
@@ -137,6 +137,12 @@ public class Spider {
 			anime.setLink("m.dmzj.com" + element1.select("a").attr("href"));
 			anime.setName(element1.select(".title").text());
 			animes.add(anime);
+		}
+		
+		for (Anime anime : animes)
+		{
+			System.out.println(anime.getName());
+			System.out.println(anime.getLink());
 		}
 		return animes;
 	}

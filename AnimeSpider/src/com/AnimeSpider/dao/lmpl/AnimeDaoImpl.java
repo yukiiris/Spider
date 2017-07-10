@@ -1,9 +1,12 @@
 package com.AnimeSpider.dao.lmpl;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.List;
 
+import com.AnimeSpider.Spider.Spider;
 import com.AnimeSpider.dao.IAnimeDAO;
 import com.AnimeSpider.vo.Anime;
 
@@ -54,6 +57,17 @@ public class AnimeDaoImpl implements IAnimeDAO{
 
 	public List<Anime> findAnime(String name) 
 	{
-		
+		String url = null;
+		List<Anime> animes = null;
+		try
+		{
+			url = URLEncoder.encode(name, "UTF-8");
+		}
+		catch (UnsupportedEncodingException e)
+		{
+			e.printStackTrace();
+		}
+		animes = Spider.getAnime(Spider.getContent("http://m.dmzj.com/search/" + url + ".html"));
+		return animes;
 	}
 }

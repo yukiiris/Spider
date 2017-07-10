@@ -53,6 +53,26 @@ public class AnimeDAOProxy implements IAnimeDAO{
 
 	public List<Anime> findAnime(String name)
 	{
-		
+		List<Anime> animes = null;
+		try
+		{
+			dao.findAnime(name);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally 
+		{
+			try
+			{
+				dbc.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return animes;
 	}
 }

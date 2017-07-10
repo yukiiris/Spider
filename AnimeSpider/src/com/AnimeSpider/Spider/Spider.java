@@ -8,6 +8,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.http.HttpEntity;
@@ -125,14 +126,17 @@ public class Spider {
 		List<Anime> animes = new ArrayList<>();
 		Document doc = Jsoup.parse(html);
 		Elements elements1 = doc.getElementsByClass("itemBox");
-		Elements elements2 = doc.getElementsByClass("itemTxt");
+		
 		for (Element element1 : elements1)
 		{
 			Anime anime = new Anime();
-			anime.setLink(element1.attr("href"));
-			anime.setName("title");
+			Pattern pattern = Pattern.compile("/view/(.+?)/");
+			Matcher matcher = pattern.matcher(element1.select("a").last().attr("href"));
+			matcher.find();
+			anime.setID(Integer.parseInt(matcher.group(1)));
+			anime.setLink("m.dmzj.com" + element1.select("a").attr("href"));
+			anime.setName(element1.select(".title").text());
 			animes.add(anime);
-			
 		}
 		return animes;
 	}
@@ -147,7 +151,8 @@ public class Spider {
 		}
 		//GetContent getContent = new GetContent("http://m.dmzj.com/");
 		//System.out.println("http://m.dmzj.com/search/" + url + ".html?");
-		System.out.println(getContent("http://m.dmzj.com/search/" + url + ".html"));
+		getAnime(getContent("http://m.dmzj.com/search/" + url + ".html"));
+		//System.out.println(getContent("http://m.dmzj.com/search/" + url + ".html"));
 	}
 }
 

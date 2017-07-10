@@ -33,6 +33,16 @@
     <url-pattern>/find</url-pattern>
 </servlet-mapping>
 
+ <filter>  
+        <filter-name>Login</filter-name>  
+        <filter-class>com.AnimeSpider.filter.LoginFilter</filter-class>  
+ </filter>  
+      
+    <filter-mapping>  
+        <filter-name>Login</filter-name>  
+        <url-pattern>/*</url-pattern>  
+    </filter-mapping> 
+    
 <filter>  
         <filter-name>Encoding</filter-name>  
         <filter-class>com.AnimeSpider.filter.CharacterEncodingFilter</filter-class>  
@@ -40,10 +50,11 @@
             <param-name>encoding</param-name>  
             <param-value>UTF-8</param-value>  
         </init-param>  
-    </filter>  
+ </filter>  
       
     <filter-mapping>  
         <filter-name>Encoding</filter-name>  
         <url-pattern>/*</url-pattern>  
     </filter-mapping> 
+   
 </web-app>

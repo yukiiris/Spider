@@ -33,7 +33,7 @@
 		{
 	%>
 			<h4><%=anime.getName() %></h4>
-			<h4><%=anime.getLink() %></h4>
+			<a href=<%=anime.getLink() %>><%= anime.getLink() %></a>
 			<h4>===============================</h4>
 	<% 
 		}

@@ -10,6 +10,7 @@
 <h1>Login</h1>
 <%
 	request.setCharacterEncoding("GBK");
+	session.setAttribute("isLogin", false);
 %>
 <%
 	List<String> info = (List<String>)request.getAttribute("info");

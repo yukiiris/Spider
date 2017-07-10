@@ -33,14 +33,6 @@ public class FindAnimeServlet extends HttpServlet{
 		{
 			e.printStackTrace();
 		}
-		if (animes != null)
-		{
-			for (Anime anime : animes)
-			{
-				System.out.println(anime.getName());
-				System.out.println(anime.getLink());
-			}
-		}
 		request.setAttribute("animes", animes);
 		request.getRequestDispatcher(path).forward(request, response);
 	}

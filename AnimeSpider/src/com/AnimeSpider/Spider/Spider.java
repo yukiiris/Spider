@@ -4,24 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.NameValuePair;
-import org.apache.http.ParseException;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.CloseableHttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.util.EntityUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -31,14 +18,6 @@ import com.AnimeSpider.vo.Anime;
 
 public class Spider {
 
-	private CloseableHttpClient httpClient = null;
-	private String url;
-	
-	public Spider(String url)
-	{
-		httpClient = HttpClients.createDefault();
-		this.url = url;
-	}
 	
 //	public String get()
 //	{
@@ -134,7 +113,7 @@ public class Spider {
 			Matcher matcher = pattern.matcher(element1.select("a").last().attr("href"));
 			matcher.find();
 			anime.setID(Integer.parseInt(matcher.group(1)));
-			anime.setLink("m.dmzj.com" + element1.select("a").attr("href"));
+			anime.setLink("http://m.dmzj.com" + element1.select("a").attr("href"));
 			anime.setName(element1.select(".title").text());
 			animes.add(anime);
 		}

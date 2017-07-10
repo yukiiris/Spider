@@ -73,11 +73,6 @@ public class AnimeDAOProxy implements IAnimeDAO{
 				e.printStackTrace();
 			}
 		}
-		for (Anime anime : animes)
-		{
-			System.out.println(anime.getName());
-			System.out.println(anime.getLink());
-		}
 		return animes;
 	}
 }

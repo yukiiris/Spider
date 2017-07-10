@@ -24,9 +24,9 @@ public class LoginServlet extends HttpServlet{
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		List<String> info = new ArrayList<String>();
+
+		int i = 0;
 		
-		int i;
-		System.out.println(password);
 		if (name == null || "".equals(name))
 		{
 			info.add("名字不能为空");
@@ -60,6 +60,8 @@ public class LoginServlet extends HttpServlet{
 		request.setAttribute("info", info);
 		if (info.size() == 0)
 		{
+			request.getSession().setAttribute("isLogin", true);
+			request.getSession().setAttribute("ID", i);
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 		}
 		else

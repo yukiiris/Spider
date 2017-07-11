@@ -11,9 +11,6 @@
 <title>Search Page</title>
 </head>
 <body>
-<%
-	request.setCharacterEncoding("GBK");
-%>
 
 <form action="find" method="post">
 	anime:<input type="text" name="name"><br><br>

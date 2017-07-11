@@ -29,7 +29,7 @@ public class LoginFilter implements Filter{
 		String path = servletRequest.getRequestURI();
 		boolean isLogin = (boolean)session.getAttribute("isLogin");
 		
-		if ((path.indexOf("/login") > -1) || (isLogin == true))
+		if ((path.indexOf("/login") > -1) || (isLogin == true) || (path.indexOf("/regiser") > -1))
 		{
 			chain.doFilter(servletRequest, servletResponse);
 			return;

@@ -1,4 +1,4 @@
-package com.AnimeSpider.Spider;
+package com.AnimeSpider.spider;
 
 import java.io.BufferedReader;
 import java.io.IOException;

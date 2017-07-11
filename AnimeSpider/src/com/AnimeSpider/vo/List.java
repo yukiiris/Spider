@@ -2,25 +2,25 @@ package com.AnimeSpider.vo;
 
 public class List {
 
-	private String user;
-	private String anime;
+	private int UID;
+	private int AID;
 	private boolean isFollow;
 	
-	public String getUser() 
+	public int getUID() 
 	{
-		return user;
+		return UID;
 	}
-	public void setUser(String user)
+	public void setUID(int UID)
 	{
-		this.user = user;
+		this.UID = UID;
 	}
-	public String getAnime() 
+	public int getAID() 
 	{
-		return anime;
+		return AID;
 	}
-	public void setAnime(String anime) 
+	public void setAID(int AID) 
 	{
-		this.anime = anime;
+		this.AID = AID;
 	}
 	public boolean isFollow() 
 	{

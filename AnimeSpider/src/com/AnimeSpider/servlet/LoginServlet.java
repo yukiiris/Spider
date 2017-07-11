@@ -61,7 +61,7 @@ public class LoginServlet extends HttpServlet{
 		if (info.size() == 0)
 		{
 			request.getSession().setAttribute("isLogin", true);
-			request.getSession().setAttribute("ID", i);
+			request.getSession().setAttribute("UID", i);
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 		}
 		else

@@ -1,7 +1,7 @@
 package com.AnimeSpider.servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.net.URLDecoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,37 +9,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.AnimeSpider.factory.DAOFactory;
-import com.AnimeSpider.vo.Anime;
 
-public class FindAnimeServlet extends HttpServlet{
+public class FollowServlet extends HttpServlet{
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException
 	{
-		List<Anime> animes = null;
-		String name = request.getParameter("name");
-		String path = "search.jsp";
-		System.out.println(name);
+		request.setCharacterEncoding("UTF-8");
+		int UID = Integer.parseInt(request.getParameter("uid"));
+		String na = URLDecoder.decode(request.getParameter("AName"), "UTF-8");
+		String name = new String(na.getBytes("ISO-8859-1"),"UTF-8");
+		
 		try
 		{
-			animes = DAOFactory.getIAnimeDAOInstance().searchAnime(name);
+			if (DAOFactory.getIAnimeDAOInstance().findAnime(name, UID))
+			{
+				//TODO
+			}
+			else
+			{
+				DAOFactory.getIAnimeDAOInstance().doCreate(name, UID, 1);
+				request.getRequestDispatcher("following.jsp");
+			}
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		request.setAttribute("animes", animes);
-		request.getRequestDispatcher(path).forward(request, response);
+		request.getRequestDispatcher("search.jsp");
 	}
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException,IOException
 	{
 		doGet(request, response);
 	}
-
 }

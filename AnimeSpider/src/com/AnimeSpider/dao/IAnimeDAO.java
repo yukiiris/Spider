@@ -6,6 +6,8 @@ import com.AnimeSpider.vo.Anime;
 
 public interface IAnimeDAO {
 
-	public boolean doCreate(String name, int ID) throws Exception;
-	public List<Anime> findAnime(String name);
+	public boolean doCreate(String name, int ID, int isFollow) throws Exception;
+	public List<Anime> searchAnime(String name);
+	public boolean findAnime(String name, int UID);
+	public List<Anime> getAll(int UID);
 }

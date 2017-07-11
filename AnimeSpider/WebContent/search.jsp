@@ -31,6 +31,8 @@
 	%>
 			<h4><%=anime.getName() %></h4>
 			<a href=<%=anime.getLink() %>><%= anime.getLink() %></a>
+			<a href="follow?uid=<%=session.getAttribute("UID")%>&AName=<%=anime.getName()%>">
+			Follow</a>
 			<h4>===============================</h4>
 	<% 
 		}

@@ -43,6 +43,15 @@
     <url-pattern>/follow</url-pattern>
 </servlet-mapping>
 
+<servlet>
+    <servlet-name>FollowListServlet</servlet-name>
+    <servlet-class>com.AnimeSpider.servlet.FollowListServlet</servlet-class>
+</servlet>
+ 
+<servlet-mapping>
+    <servlet-name>FollowListServlet</servlet-name>
+    <url-pattern>/followList</url-pattern>
+</servlet-mapping>
  <filter>  
         <filter-name>Login</filter-name>  
         <filter-class>com.AnimeSpider.filter.LoginFilter</filter-class>  

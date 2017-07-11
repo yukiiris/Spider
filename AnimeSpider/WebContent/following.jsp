@@ -12,5 +12,23 @@
 <%
 	List<Anime> animes = (ArrayList<Anime>)request.getAttribute("animes");
 %>
+<%
+	if (animes == null)
+	{
+%>
+		
+<% 
+	}
+	else
+	{
+		for (Anime anime : animes)
+		{
+	%>
+			<a href="details.jsp"><%=anime.getName() %></a>
+			<h4>===============================</h4>
+	<% 
+		}
+	}
+%>
 </body>
 </html>

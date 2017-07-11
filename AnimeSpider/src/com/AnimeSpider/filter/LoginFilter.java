@@ -27,14 +27,20 @@ public class LoginFilter implements Filter{
 		HttpSession session = servletRequest.getSession();
 		
 		String path = servletRequest.getRequestURI();
-		boolean isLogin = (boolean)session.getAttribute("isLogin");
 		
-		if ((path.indexOf("/login") > -1) || (isLogin == true) || (path.indexOf("/regiser") > -1))
+		
+		if ((path.indexOf("/login") > -1) || (path.indexOf("/regiser") > -1))
 		{
 			chain.doFilter(servletRequest, servletResponse);
 			return;
 		}
-		else
+		boolean isLogin = (boolean)session.getAttribute("isLogin");
+		if (isLogin == true)
+		{
+			chain.doFilter(servletRequest, servletResponse);
+			return;
+		}
+		if (isLogin == false)
 		{
 			servletResponse.sendRedirect("login.jsp");
 		}

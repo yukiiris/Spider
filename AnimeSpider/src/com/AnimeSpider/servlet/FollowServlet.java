@@ -33,7 +33,8 @@ public class FollowServlet extends HttpServlet{
 			else
 			{
 				DAOFactory.getIAnimeDAOInstance().doCreate(name, UID, 1);
-				request.getRequestDispatcher("following.jsp");
+				request.setAttribute("UID", UID);
+				request.getRequestDispatcher("/followList").forward(request, response);;
 			}
 		}
 		catch (Exception e)

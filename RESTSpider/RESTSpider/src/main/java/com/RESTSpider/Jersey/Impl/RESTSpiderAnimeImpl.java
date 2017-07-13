@@ -1,9 +1,11 @@
 package com.RESTSpider.Jersey.Impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.RESTSpider.Jersey.Api.RESTSpiderAnimeApi;
 import com.RESTSpider.factory.DAOFactory;
+import com.RESTSpider.spider.Spider;
 import com.RESTSpider.vo.Anime;
 
 public class RESTSpiderAnimeImpl implements RESTSpiderAnimeApi{
@@ -22,4 +24,11 @@ public class RESTSpiderAnimeImpl implements RESTSpiderAnimeApi{
 		return animes;
 	}
 	
+	public List<String> Chapter(String url)
+	{
+		List<String> links = new ArrayList<>();
+		
+		links = Spider.getChapterLink(url);
+		return links;
+	}
 }

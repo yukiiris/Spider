@@ -101,13 +101,41 @@ public class Spider {
 		return null;
 	}
 	
-	public static List<Anime> getAnime(String html)
+	public static List<String> getChapterLink(String url)
+	{
+		List<String> links = new ArrayList<>();
+		String html = getContent(url);
+		Pattern pattern = Pattern.compile("/info/(.+?).html");
+		Matcher matcher = pattern.matcher(url);
+		matcher.find();
+		String header = matcher.group(1);
+		pattern = Pattern.compile("\"id\":(.+?),");
+		matcher = pattern.matcher(html);
+		
+		while (matcher.find())
+		{
+			links.add("http://m.dmzj.com/view/" + header + "/" + matcher.group(1) + ".html");
+		}
+		return links;
+	}
+	
+	public static String getAnimeName(String html)
+	{
+		String name = "";
+		Pattern pattern = Pattern.compile("comicName\">(.+?)<");
+		Matcher matcher = pattern.matcher(html);
+		matcher.find();
+		name = matcher.group(1);
+		return name;
+	}
+	
+	public static List<Anime> getAnimes(String html)
 	{
 		List<Anime> animes = new ArrayList<>();
 		Document doc = Jsoup.parse(html);
-		Elements elements1 = doc.getElementsByClass("itemBox");
+		Elements elements = doc.getElementsByClass("itemBox");
 		
-		for (Element element1 : elements1)
+		for (Element element1 : elements)
 		{
 			Anime anime = new Anime();
 			Pattern pattern = Pattern.compile("/view/(.+?)/");
@@ -126,8 +154,8 @@ public class Spider {
 //		}
 		return animes;
 	}
-//	public static void main(String[] args)
-//	{
+	public static void main(String[] args)
+	{
 //		String url = null;
 //		try {
 //			url = URLEncoder.encode("一拳超人", "UTF-8");
@@ -135,9 +163,10 @@ public class Spider {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-//		//GetContent getContent = new GetContent("http://m.dmzj.com/");
-//		//System.out.println("http://m.dmzj.com/search/" + url + ".html?");
-//		getAnime(getContent("http://m.dmzj.com/search/" + url + ".html"));
-//		//System.out.println(getContent("http://m.dmzj.com/search/" + url + ".html"));
-//	}
+		//GetContent getContent = new GetContent("http://m.dmzj.com/");
+		//System.out.println("http://m.dmzj.com/search/" + url + ".html?");
+		getAnimeName(getContent("http://m.dmzj.com/info/9949.html"));
+		//System.out.print(getContent("http://m.dmzj.com/info/20844.html"));
+		//getLink("http://m.dmzj.com/info/bayunxiaojiexiangyaoweishi.html");
+	}
 }

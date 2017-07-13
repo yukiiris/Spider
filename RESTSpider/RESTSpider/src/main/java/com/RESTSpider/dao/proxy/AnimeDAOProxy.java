@@ -29,12 +29,12 @@ public class AnimeDAOProxy implements IAnimeDAO{
 		dao = new AnimeDaoImpl(dbc.getConnection());
 	}
 	
-	public boolean doCreate(String name, int ID, int isFollow) throws Exception
+	public boolean doCreate(String name, int ID, String link, int isFollow) throws Exception
 	{
 		boolean isCreate = false;
 		try
 		{
-			isCreate = dao.doCreate(name, ID, 1);
+			isCreate = dao.doCreate(name, ID, link, 1);
 		}
 		catch (Exception e)
 		{
@@ -104,12 +104,12 @@ public class AnimeDAOProxy implements IAnimeDAO{
 		return isFind;
 	}
 
-	public  List<Anime> getAll(int UID)
+	public  List<Anime> getAll(int UID, int isFollow)
 	{
 		List<Anime> animes = new ArrayList<>();
 		try 
 		{
-			animes = dao.getAll(UID);
+			animes = dao.getAll(UID, isFollow);
 		}
 		catch (Exception e)
 		{
@@ -127,5 +127,30 @@ public class AnimeDAOProxy implements IAnimeDAO{
 			}
 		}
 		return animes;
+	}
+	
+	public String getLink(String name)
+	{
+		String link = "";
+		try
+		{
+			link = dao.getLink(name);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				dbc.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return link;
 	}
 }

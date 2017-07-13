@@ -76,4 +76,28 @@ public class UserDAOProxy implements IUserDAO{
 		return isFind;
 	}
 
+	public int findID(String name) throws Exception
+	{
+		int ID = 0;
+		try
+		{
+			ID = dao.findID(name);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				dbc.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return ID;
+	}
 }

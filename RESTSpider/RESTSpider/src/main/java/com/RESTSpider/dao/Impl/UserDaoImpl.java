@@ -109,4 +109,51 @@ public class UserDaoImpl implements IUserDAO{
 		return isFind;
 	}
 
+	public int findID(String name)
+	{
+		int ID = 0;
+		try
+		{
+			String sql = "SELECT id FROM user WHERE name=?";
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, name);
+			ResultSet rs = pstm.executeQuery();
+			
+			while (rs.next())
+			{
+				ID = rs.getInt("id");
+			}
+			rs.close();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				if (pstm != null)
+				{
+					pstm.close();
+				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				if (conn != null)
+				{
+					conn.close();
+				}
+			}
+			catch (Exception exception)
+			{
+				exception.printStackTrace();
+			}
+		}
+		return ID;
+	}
 }

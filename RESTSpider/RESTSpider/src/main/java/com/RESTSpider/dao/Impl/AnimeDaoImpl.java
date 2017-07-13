@@ -23,17 +23,18 @@ public class AnimeDaoImpl implements IAnimeDAO{
 		this.conn = conn;
 	}
 	
-	public boolean doCreate(String name, int ID, int isFollow) throws Exception
+	public boolean doCreate(String name, int ID, String link, int isFollow) throws Exception
 	{
 		boolean isCreate = false;
 		try
 		{
-			String sql = "INSERT INTO list(name,uid,isfollow) VALUES(?,?,?)";
+			String sql = "INSERT INTO list(name,uid,isfollow,link) VALUES(?,?,?.?)";
 			pstm = conn.prepareStatement(sql);
 			pstm.setString(1, name);
 			pstm.setInt(2, ID);
 			pstm.setInt(3, isFollow);
-	
+			pstm.setString(4, link);
+			
 			if (pstm.executeUpdate() > 0)
 			{
 				isCreate = true;
@@ -75,7 +76,7 @@ public class AnimeDaoImpl implements IAnimeDAO{
 		{
 			e.printStackTrace();
 		}
-		animes = Spider.getAnime(Spider.getContent("http://m.dmzj.com/search/" + url + ".html"));
+		animes = Spider.getAnimes(Spider.getContent("http://m.dmzj.com/search/" + url + ".html"));
 		return animes;
 	}
 
@@ -129,13 +130,15 @@ public class AnimeDaoImpl implements IAnimeDAO{
 		
 	}
 
-	public List<Anime> getAll(int UID)
+	public List<Anime> getAll(int UID, int isFollow)
 	{
 		List<Anime> animes = new ArrayList<>();
 		try
 		{
-			String sql = "SELECT * FROM list WHERE uid=" + UID;
+			String sql = "SELECT * FROM list WHERE uid=? and isfollow=?";
 			pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, UID);
+			pstm.setInt(2, isFollow);
 			ResultSet rs = pstm.executeQuery();
 			
 			while (rs.next())
@@ -175,5 +178,53 @@ public class AnimeDaoImpl implements IAnimeDAO{
 			}
 		}
 		return animes;
+	}
+	
+	public String getLink(String name)
+	{
+		String link = "";
+		try
+		{
+			String sql = "SELECT link FROM list WHERE name=?";
+			pstm = conn.prepareStatement(sql);
+			pstm.setString(1, name);
+			ResultSet rs = pstm.executeQuery();
+			
+			while (rs.next())
+			{
+				link = rs.getString("link");
+			}
+			rs.close();
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				if (pstm != null)
+				{
+					pstm.close();
+				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+			try
+			{
+				if (conn != null)
+				{
+					conn.close();
+				}
+			}
+			catch (Exception exception)
+			{
+				exception.printStackTrace();
+			}
+		}
+		return link;
 	}
 }

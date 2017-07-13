@@ -8,14 +8,22 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;  
 import javax.servlet.ServletRequest;  
 import javax.servlet.ServletResponse;  
-import javax.servlet.http.HttpServletRequest;  
-  
-public class CharacterEncodingFilter implements Filter{  
+import javax.servlet.http.HttpServletRequest;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerRequestFilter;
+
+import org.glassfish.jersey.server.ContainerRequest;  
+
+public class CharacterEncodingFilter implements ContainerRequestFilter{  
   
     private String encoding = "UTF-8";  
     protected FilterConfig filterConfig;  
       
-      
+    @Override
+	public void filter(ContainerRequestContext containerRequestContext) throws IOException 
+    {
+    	
+    }
     public void init(FilterConfig filterConfig) throws ServletException {  
 
         this.filterConfig = filterConfig;  

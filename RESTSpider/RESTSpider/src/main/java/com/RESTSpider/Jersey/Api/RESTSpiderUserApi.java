@@ -1,7 +1,6 @@
 package com.RESTSpider.Jersey.Api;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -20,24 +19,13 @@ public interface RESTSpiderUserApi {
 	
 	@Path("/user")
 	@POST
-	@Produces(MediaType.APPLICATION_JSON)
-	public boolean Login(User user);
-	
-//	@Path("/demo")
-//	public interface JerseyDemoApi {
-//
-//	    @Path("hello")
-//	    @GET
-//	    public String hello();
-//	}
+    @Consumes(MediaType.APPLICATION_JSON)  
+    @Produces(MediaType.APPLICATION_JSON)  
+	public String Login(User user);
 	
 //	@Path("/user")
 //	@GET
 //	@Produces(MediaType.APPLICATION_JSON)
 //	public User showUser();
-    
-//  @GET  
-//  @Path("/getUserXml")  
-//  @Produces(MediaType.APPLICATION_JSON)  
-//  public User getUserXml();
+   
 }

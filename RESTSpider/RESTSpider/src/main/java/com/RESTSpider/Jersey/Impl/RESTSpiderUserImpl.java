@@ -1,6 +1,7 @@
 package com.RESTSpider.Jersey.Impl;
 
 import com.RESTSpider.Jersey.Api.RESTSpiderUserApi;
+import com.RESTSpider.Token.Token;
 import com.RESTSpider.factory.DAOFactory;
 import com.RESTSpider.vo.User;
 
@@ -14,6 +15,7 @@ public class RESTSpiderUserImpl implements RESTSpiderUserApi{
 		JSONObject object = JSONObject.fromObject(json);
 		User user = (User)JSONObject.toBean(object, User.class);
 		System.out.println(user.getName());
+		
 		try
 		{
 			isCreate = DAOFactory.getIUserDAOInstance().doCreate(user);
@@ -27,18 +29,9 @@ public class RESTSpiderUserImpl implements RESTSpiderUserApi{
 	
 
 	
-	public boolean Login(User user)
+	public String Login(User user)
 	{
-		boolean isLogin = false;
-		try
-		{
-			isLogin = DAOFactory.getIUserDAOInstance().findUser(user);
-		}
-		catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		return isLogin;
+		return Token.authenticateUser(user);
 	}
 
 }

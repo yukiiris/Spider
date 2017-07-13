@@ -10,8 +10,6 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
-	private String pendingList;
-	private String followingList;
 	
 	public User()
 	{
@@ -57,14 +55,4 @@ public class User {
 	{
 		this.password = password;
 	}
-	public String getPendingList()
-	{
-		return pendingList;
-	}
-	public String getFollowingList()
-	{
-		return followingList;
-	}
-
-
 }

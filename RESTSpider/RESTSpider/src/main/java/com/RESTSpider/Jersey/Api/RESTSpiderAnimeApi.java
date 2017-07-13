@@ -2,17 +2,17 @@ package com.RESTSpider.Jersey.Api;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import com.RESTSpider.vo.Anime;
 
+@Path("/animes")
 public interface RESTSpiderAnimeApi {
-
-	@Path("/animes")
+	
 	@GET
-	@Produces
-	public List<Anime> searchAnime();
+	public List<Anime> searchAnime(@QueryParam("name")String name);
 	
 }

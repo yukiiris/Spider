@@ -27,7 +27,6 @@ public class RESTSpiderListImpl implements RESTSpiderListApi{
 	
 	public List<Anime> getFollowingList(String name)
 	{
-		System.out.println(name);
 		List<Anime> animes = new ArrayList<>();
 		try
 		{

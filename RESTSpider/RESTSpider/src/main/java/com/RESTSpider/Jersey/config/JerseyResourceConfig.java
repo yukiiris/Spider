@@ -13,12 +13,13 @@ public class JerseyResourceConfig extends ResourceConfig{
 
 	public JerseyResourceConfig()
 	{
+		register(JWTSecurityFilter.class, 1);
 		register(RESTSpiderUserImpl.class);
 		register(LoggingFilter.class);
 		packages("com.RESTSpider.Jersey.Impl");
 		register(RESTSpiderAnimeImpl.class);
 		register(RESTSpiderListImpl.class);
 		register(JacksonJsonProvider.class);
-		//register(JWTSecurityFilter.class, 1);
+		
 	}
 }

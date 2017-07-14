@@ -18,7 +18,7 @@ public interface RESTSpiderListApi {
 	@Path("/PendingList")
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Anime> getPendingList(String name);
+	public List<Anime> getPendingList(@QueryParam("name")String name);
 	
 	@Path("/Following")
 	@GET

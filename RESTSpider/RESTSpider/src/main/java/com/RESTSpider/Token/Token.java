@@ -113,7 +113,7 @@ public class Token {
     public static Key receiveSecret(String keystr){  
         Key key = null;
     	try {           
-         //2.通过读取到的key  获取到key秘钥对象  
+         //2.通过读取到的key  获取到key秘钥
             byte[] keybyte= HexBin.decode(keystr); 
             DESedeKeySpec deSedeKeySpec=new DESedeKeySpec(keybyte);  
             SecretKeyFactory secretKeyFactory=SecretKeyFactory.getInstance("DESede");  
@@ -125,7 +125,7 @@ public class Token {
         }  
     	return key;
     }
-	
+
 //    public static void main(String[] args)
 //	{
 //		String jsw = "eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKZXJzZXktU2VjdXJpdHktQmFzaWMiLCJzdWIiOiJtb2x0cmVzIiwiYXVkIjoidXNlciIsImV4cCI6MTUwMjU1MDE2MSwiaWF0IjoxNDk5OTU4MTYxLCJqdGkiOiIxIn0.lyn8YnasAZYOFZHK1REmt4lR56AscDdivEG6oZIX38U";

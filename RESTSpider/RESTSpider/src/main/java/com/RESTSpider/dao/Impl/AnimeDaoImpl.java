@@ -227,4 +227,41 @@ public class AnimeDaoImpl implements IAnimeDAO{
 		}
 		return link;
 	}
+
+	public boolean deleteAnime(int user, String anime, int isFollow)
+	{
+		boolean isDelete = false;
+		try
+		{
+			String sql = "DELETE FROM list WHERE uid=? and isfollow=? and name=?";
+			pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, user);
+			pstm.setInt(2, isFollow);
+			pstm.setString(3, anime);
+			
+			if (pstm.executeUpdate() > 0)
+			{
+				isDelete = true;
+			}
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				if (pstm != null)
+				{
+					pstm.close();
+				}
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return isDelete;
+	}
 }

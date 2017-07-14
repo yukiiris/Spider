@@ -34,7 +34,7 @@ public class AnimeDAOProxy implements IAnimeDAO{
 		boolean isCreate = false;
 		try
 		{
-			isCreate = dao.doCreate(name, ID, link, 1);
+			isCreate = dao.doCreate(name, ID, link, isFollow);
 		}
 		catch (Exception e)
 		{
@@ -54,6 +54,31 @@ public class AnimeDAOProxy implements IAnimeDAO{
 		return isCreate; 
 	}
 
+	public boolean deleteAnime(int user, String anime, int isFollow)
+	{
+		boolean isDelete = false;
+		try
+		{
+			isDelete = dao.deleteAnime(user, anime, isFollow);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		finally
+		{
+			try
+			{
+				dbc.close();
+			}
+			catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+		return isDelete; 
+	}
+	
 	public List<Anime> searchAnime(String name)
 	{
 		List<Anime> animes = null;

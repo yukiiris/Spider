@@ -40,6 +40,36 @@ public class RESTSpiderListImpl implements RESTSpiderListApi{
 		return animes;
 	}
 
+	public boolean deleteFollowing(Anime anime,String name)
+	{
+		boolean isDelete = false;
+		try
+		{
+			int ID = DAOFactory.getIUserDAOInstance().findID(name);
+			isDelete = DAOFactory.getIAnimeDAOInstance().deleteAnime(ID, anime.getName(), 1);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return isDelete;
+	}
+	
+	public boolean deletePending(Anime anime,String name)
+	{
+		boolean isDelete = false;
+		try
+		{
+			int ID = DAOFactory.getIUserDAOInstance().findID(name);
+			isDelete = DAOFactory.getIAnimeDAOInstance().deleteAnime(ID, anime.getName(), 0);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return isDelete;
+	}
+	
 	public boolean createFollowing(Anime anime, String name)
 	{
 		boolean isCreate = false;

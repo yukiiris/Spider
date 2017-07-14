@@ -3,6 +3,7 @@ package com.RESTSpider.Jersey.Api;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -37,4 +38,13 @@ public interface RESTSpiderListApi {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public boolean createPending(Anime anime, @QueryParam("name")String name);
 
+	@Path("/PendingList")
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean deletePending(Anime anime,@QueryParam("name")String name);
+	
+	@Path("/Following")
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	public boolean deleteFollowing(Anime anime,@QueryParam("name")String name);
 }

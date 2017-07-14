@@ -12,4 +12,5 @@ public interface IAnimeDAO {
 	public boolean findAnime(String name, int UID);
 	public List<Anime> getAll(int UID, int isFollow);
 	public String getLink(String name);
+	public boolean deleteAnime(int user, String anime, int isFollow);
 }

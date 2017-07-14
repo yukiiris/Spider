@@ -21,7 +21,6 @@ public interface RESTSpiderAnimeApi {
 	public List<Anime> searchAnime(@QueryParam("name")String name);
 	
 	@Path("/detail")
-	@POST
-	@Consumes("application/x-www-form-urlencoded")
-	public List<String> Chapter(@FormParam("url")String url);
+	@GET
+	public List<String> Chapter(@QueryParam("name")String name);
 }

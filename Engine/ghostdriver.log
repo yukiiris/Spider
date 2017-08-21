@@ -1,5 +1,15 @@
-[INFO  - 2017-08-20T14:05:28.803Z] GhostDriver - Main - running on port 63565
-[INFO  - 2017-08-20T14:05:29.842Z] Session [9fb50b30-85b0-11e7-9cd3-1b09895bbdea] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
-[INFO  - 2017-08-20T14:05:29.842Z] Session [9fb50b30-85b0-11e7-9cd3-1b09895bbdea] - page.customHeaders:  - {}
-[INFO  - 2017-08-20T14:05:29.842Z] Session [9fb50b30-85b0-11e7-9cd3-1b09895bbdea] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
-[INFO  - 2017-08-20T14:05:29.842Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 9fb50b30-85b0-11e7-9cd3-1b09895bbdea
+[INFO  - 2017-08-21T01:56:49.089Z] GhostDriver - Main - running on port 60737
+[INFO  - 2017-08-21T01:56:50.198Z] Session [ff2e8970-8613-11e7-897c-e3c15efeef88] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2017-08-21T01:56:50.198Z] Session [ff2e8970-8613-11e7-897c-e3c15efeef88] - page.customHeaders:  - {}
+[INFO  - 2017-08-21T01:56:50.198Z] Session [ff2e8970-8613-11e7-897c-e3c15efeef88] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2017-08-21T01:56:50.198Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: ff2e8970-8613-11e7-897c-e3c15efeef88
+[ERROR - 2017-08-21T01:56:56.468Z] Session [ff2e8970-8613-11e7-897c-e3c15efeef88] - page.onError - msg: TypeError: null is not an object (evaluating 'a.addEventListener')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-08-21T01:56:56.469Z] Session [ff2e8970-8613-11e7-897c-e3c15efeef88] - page.onError - stack:
+  bind (http://cpro.baidustatic.com/cpro/ui/noexpire/js/rs/business/feedbackPC.min.js:1)
+  $feedbackevents (http://cpro.baidustatic.com/cpro/ui/noexpire/js/rs/business/feedbackPC.min.js:1)
+  loadDeps (http://cpro.baidustatic.com/cpro/ui/noexpire/js/2.0.1/oojs.js:1)
+  define (http://cpro.baidustatic.com/cpro/ui/noexpire/js/2.0.1/oojs.js:1)
+
+  phantomjs://platform/console++.js:263 in error

@@ -10,7 +10,7 @@ class Outputer(object):
             out.write(d.get('context'))
             print("正在写入第%s章" % d.get('chapter_id'))
         print("完成")
-        out.close();
+        out.close()
 
 
     def chang_pei_outer(self,name, novel):
@@ -20,4 +20,4 @@ class Outputer(object):
                 out.write(e)
                 print("正在写入")
         print("完成")
-        out.close();
+        out.close()

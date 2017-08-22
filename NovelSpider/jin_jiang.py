@@ -39,7 +39,7 @@ class JinJiang(object):
         else:
             vip = False
             self.phantomjs.get(url)
-            WebDriverWait(self.phantomjs, 10).until(lambda driver: driver.find_element_by_class(".noveltext"))
+            WebDriverWait(self.phantomjs, 10).until(lambda driver: driver.find_element_by_class_name(".noveltext"))
             page = self.phantomjs.page_source
             print(page)
         soup = BeautifulSoup(page, "lxml")

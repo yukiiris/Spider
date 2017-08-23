@@ -117,4 +117,4 @@ class ChangPei(object):
             self.outputer.chang_pei_outer(self.name, novel)
 
 ChangPei(["http://allcp.net/forum.php?mod=viewthread&tid=37755&page=1&auth"
-          "orid=159685", "http://allcp.net/forum.php?mod=viewthread&tid=23385&page=1&authorid=122629"], "悲伤的火鸟", "cp998877123").start()
+          "orid=159685", "http://allcp.net/forum.php?mod=viewthread&tid=23385&page=1&authorid=122629"], "", "").start()

@@ -18,9 +18,6 @@ def get_chapter(url):
         try:
             print(2)
             driver.get(url)
-            # self.driver.execute_script("window.stop()")
-            # WebDriverWait(self.driver, 5, 0.5).until(
-            #     lambda x: x.find_element_by_class_name("noveltext").is_displayed())
         except:
             try:
                 driver.refresh()

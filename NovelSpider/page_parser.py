@@ -1,5 +1,4 @@
 #-*-coding:utf-8-*- #编码声明，不要忘记！
-from bs4 import BeautifulSoup
 import re
 
 

@@ -12,7 +12,6 @@ class Outputer(object):
         print("完成")
         out.close()
 
-
     def chang_pei_outer(self,name, novel):
         out = open(name + ".txt", "w", encoding="utf-8")
         for d in novel:

@@ -18,13 +18,12 @@ class ChangPei(object):
         self.outputer = page_outputer.Outputer()
         self.urls = urls
         self.path = "D:\\code\\phantomjs-2.1.1-windows\\phantomjs-2.1.1-windows\\bin\\phantomjs"
-        #google = "C:\\Users\\asus\\Downloads\\chromedriver_win32 (1)\\chromedriver"
         print("初始化成功")
 
     def get_urls(self):
         text = self.soup.select(".pg")
         count = re.search("共 (.*?) 页", text.__str__())
-        if (count == None):
+        if count is None:
             return 1
         count = count.group(1)
         print("获取到%s页" % count)
@@ -81,14 +80,12 @@ class ChangPei(object):
                 })
         except Exception:
             print("")
-
-
         driver.get(url)
         return driver.page_source
 
     def check_login(self):
         page = self.get_page_by_cookie("http://allcp.net/forum.php")
-        if page == None:
+        if page is None:
             return False
         soup = BeautifulSoup(page, "lxml")
         if soup.select(".vms")[0].text.__contains__("欢迎回来"):
@@ -96,11 +93,11 @@ class ChangPei(object):
         return False
 
     def start(self):
-        if self.check_login() == False:
+        if self.check_login() is False:
             print("cookie失效")
             self.login("http://allcp.net/forum.php")
             print("正在尝试重新登录")
-            if self.check_login() == False:
+            if self.check_login() is False:
                 print("无法登录")
                 return
         print("登录成功")
